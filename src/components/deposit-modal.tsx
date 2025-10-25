@@ -17,10 +17,10 @@ interface DepositModalProps {
   updateUser: (data: any) => void;
 }
 
-const quickAmounts = [10, 20, 40, 80, 100, 200];
+const quickAmounts = [5, 20, 40, 80, 100, 200];
 
 function PaymentModal({ isOpen, onClose, paymentData, token }: { isOpen: boolean; onClose: () => void; paymentData: any; token: string | null }) {
-  const [timeLeft, setTimeLeft] = useState(900); // 15 minutos
+  const [timeLeft, setTimeLeft] = useState(900); // 5 minutos
   const prevIsOpenRef = useRef(false);
   const [isPaymentPaid, setIsPaymentPaid] = useState(false);
 
@@ -274,8 +274,8 @@ const gatewayDefault = process.env.NEXT_PUBLIC_GATEWAY_DEFAULT;
 
   const handleGeneratePayment = async () => {
     const amount = parseFloat(customAmount.replace(',', '.'));
-    if (!amount || amount < 15) {
-      toast.error('Por favor, insira um valor válido (mínimo R$ 15,00)');
+    if (!amount || amount < 5) {
+      toast.error('Por favor, insira um valor válido (mínimo R$ 5,00)');
       return;
     }
     if (!token) {
@@ -429,7 +429,7 @@ const gatewayDefault = process.env.NEXT_PUBLIC_GATEWAY_DEFAULT;
                   />
                 </div>
                 <p className="text-neutral-500 text-xs sm:text-sm">
-                  Valor mínimo: R$ 15,00
+                  Valor mínimo: R$ 5,00
                 </p>
               </div>
 
